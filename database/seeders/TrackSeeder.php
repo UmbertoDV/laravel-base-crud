@@ -15,18 +15,17 @@ class TrackSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(Faker $faker)
     {
-        // for($i = 0; $i < 50; $i++){
-            
-        // }
-        $track = new Track;
-        $track->title = "Nome";
-        $track->album = "Nome_Almbum";
-        $track->author = "Nome_Autore";
-        $track->editor = "Nome_Editore";
-        $track->length = 3.45;
-        $track->poster = "poster.png";
-        $track->save();
+        for($i = 0; $i < 50; $i++){
+            $track = new Track;
+            $track->title = $faker->streetName();
+            $track->album = $faker->state();
+            $track->author = $faker->firstNameMale();
+            $track->editor = $faker->country();
+            $track->length = $faker->randomFloat(2, 0, 5);
+            $track->poster = "https://picsum.photos/200/300";
+            $track->save();
+        }
     }
 }
